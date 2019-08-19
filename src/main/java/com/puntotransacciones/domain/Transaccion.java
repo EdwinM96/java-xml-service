@@ -18,12 +18,17 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
  * @author HP PC
  */
+@XmlRootElement(name = "usuario")
+@XmlAccessorType (XmlAccessType.FIELD)
 @Entity
 @Table(schema="public", name="transacciones")
 public class Transaccion {
