@@ -26,7 +26,7 @@ public class Usuario {
     @GeneratedValue(generator="usuario_idusuario_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "usuario_idusuario_seq", sequenceName = "public.usuario_idusuario_seq")
     @Column (name="idusuario")
-    private Integer idUsuario;
+    private Integer id;
     
     @Column (name="codigousuario")
 	private String codigoUsuario;
@@ -46,8 +46,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String codigoUsuario, String nombre, String campoId, Double saldo, Boolean activo) {
-        this.idUsuario = idUsuario;
+    public Usuario(Integer id, String codigoUsuario, String nombre, String campoId, Double saldo, Boolean activo) {
+        this.id = id;
         this.codigoUsuario = codigoUsuario;
         this.nombre = nombre;
         this.campoId = campoId;
@@ -55,12 +55,12 @@ public class Usuario {
         this.activo = activo;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getIdo() {
+        return id;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(Integer id) {
+        this.id = id;
     }
 
     public String getCodigoUsuario() {
