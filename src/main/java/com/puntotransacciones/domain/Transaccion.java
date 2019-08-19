@@ -27,7 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author HP PC
  */
-@XmlRootElement(name = "usuario")
+@XmlRootElement(name = "transaccion")
 @XmlAccessorType (XmlAccessType.FIELD)
 @Entity
 @Table(schema="public", name="transacciones")
