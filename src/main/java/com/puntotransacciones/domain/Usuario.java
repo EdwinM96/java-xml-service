@@ -5,11 +5,13 @@
  */
 package com.puntotransacciones.domain;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -43,6 +45,13 @@ public class Usuario {
     @Column (name="activo")
 	private Boolean activo;
 
+    @OneToMany(mappedBy="deudor")
+    private Set<Transaccion> transaccionesDeudor;
+    
+    @OneToMany(mappedBy="acreedor")
+    private Set<Transaccion> transaccionesAcreedor;
+    
+    
     public Usuario() {
     }
 
@@ -55,11 +64,31 @@ public class Usuario {
         this.activo = activo;
     }
 
-    public Integer getIdo() {
+
+
+
+    public Set<Transaccion> getTransaccionesDeudor() {
+        return transaccionesDeudor;
+    }
+
+    public void setTransaccionesDeudor(Set<Transaccion> transaccionesDeudor) {
+        this.transaccionesDeudor = transaccionesDeudor;
+    }
+
+    public Set<Transaccion> getTransaccionesAcreedor() {
+        return transaccionesAcreedor;
+    }
+
+    public void setTransaccionesAcreedor(Set<Transaccion> transaccionesAcreedor) {
+        this.transaccionesAcreedor = transaccionesAcreedor;
+    }
+
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setIdUsuario(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
