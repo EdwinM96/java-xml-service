@@ -5,7 +5,7 @@
  */
 package com.puntotransacciones.repository;
 
-import com.puntotransacciones.domain.Usuario;
+import com.puntotransacciones.domain.Transaccion;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Repository;
  * @author HP PC
  */
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario,Integer> {
+public interface TransaccionRepository extends JpaRepository<Transaccion,Integer> {
+   @Override
+   public List<Transaccion> findAll();
     
-    @Override
-    public List<Usuario> findAll();
+   @Override
+    public Transaccion getOne(Integer id);
     
-    @Override
-    public Usuario getOne(Integer id);
 }
