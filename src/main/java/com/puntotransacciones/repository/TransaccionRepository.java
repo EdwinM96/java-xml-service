@@ -16,10 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TransaccionRepository extends JpaRepository<Transaccion,Integer> {
-   @Override
-   public List<Transaccion> findAll();
-    
-   @Override
-    public Transaccion getOne(Integer id);
     
 }
