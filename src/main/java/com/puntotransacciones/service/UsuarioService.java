@@ -49,12 +49,12 @@ public class UsuarioService {
     
     @Transactional
     public Usuario findOne(Integer id){
-        return userRepo.getOne(id);   
+        return userRepo.findOne(id);   
     }
     
     @Transactional
     public String findOneXML(Integer id) throws JAXBException{       
-        return xmlHelper.usuarioToXML(userRepo.getOne(id));   
+        return xmlHelper.usuarioToXML(userRepo.findOne(id));   
     }
     
     
