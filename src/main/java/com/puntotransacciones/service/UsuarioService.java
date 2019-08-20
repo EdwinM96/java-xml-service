@@ -42,9 +42,7 @@ public class UsuarioService {
     public String listUsuariosXML() throws JAXBException{
         Usuarios usuarios = new Usuarios();
         usuarios.setUsuarios(userRepo.findAll());
-        String usuariosXML = xmlHelper.usuariosToXML(usuarios);
-        
-        return usuariosXML;
+        return xmlHelper.usuariosToXML(usuarios);
     }
     
     @Transactional
