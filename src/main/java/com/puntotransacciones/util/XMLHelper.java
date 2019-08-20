@@ -5,6 +5,7 @@
  */
 package com.puntotransacciones.util;
 
+import com.puntotransacciones.domain.Transaccion;
 import com.puntotransacciones.domain.Usuario;
 import com.puntotransacciones.domain.xml.Transacciones;
 import com.puntotransacciones.domain.xml.Usuarios;
@@ -29,12 +30,12 @@ public class XMLHelper {
         return respuesta.toString();     
     }
     
-    public String transaccionToXML(Usuario usuario) throws JAXBException{
-        JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
+    public String transaccionToXML(Transaccion transaccion) throws JAXBException{
+        JAXBContext jaxbContext = JAXBContext.newInstance(Transaccion.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         StringWriter respuesta = new StringWriter(); 
-        jaxbMarshaller.marshal(usuario, respuesta);
+        jaxbMarshaller.marshal(transaccion, respuesta);
         
         return respuesta.toString();     
     }
