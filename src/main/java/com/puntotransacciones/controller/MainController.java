@@ -62,6 +62,7 @@ public class MainController {
         return transacService.listTransaccion();
     }
     
+    @ResponseBody
     @RequestMapping(value = "/usuarios", produces = {MediaType.APPLICATION_XML_VALUE})    
     public List<Usuario> getUsuarios(HttpServletRequest request,HttpServletResponse response) throws JAXBException, IOException{
         return usuarioService.listUsuarios();
