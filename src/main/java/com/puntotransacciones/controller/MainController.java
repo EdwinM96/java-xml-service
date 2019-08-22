@@ -69,8 +69,9 @@ public class MainController {
     
     @RequestMapping("/")
     public ModelAndView main(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        
-        
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("main");
+        return mv;
         
     }
     
