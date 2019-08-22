@@ -23,19 +23,22 @@ public class XMLHelper {
     public String usuarioToXML(Usuario usuario) throws JAXBException{
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter respuesta = new StringWriter(); 
         jaxbMarshaller.marshal(usuario, respuesta);
-        
+        System.out.println("Usuario-----------------------------------------------------------------");
+        jaxbMarshaller.marshal(usuario, System.out);
         return respuesta.toString();     
     }
     
     public String transaccionToXML(Transaccion transaccion) throws JAXBException{
         JAXBContext jaxbContext = JAXBContext.newInstance(Transaccion.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter respuesta = new StringWriter(); 
         jaxbMarshaller.marshal(transaccion, respuesta);
+        System.out.println("Transaccion-------------------------------------------------------------------------");
+        jaxbMarshaller.marshal(transaccion, System.out);
         
         return respuesta.toString();     
     }
@@ -43,8 +46,9 @@ public class XMLHelper {
     public String usuariosToXML(Usuarios usuarios) throws JAXBException{
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuarios.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter respuesta = new StringWriter();
+        jaxbMarshaller.marshal(usuarios, System.out);
         jaxbMarshaller.marshal(usuarios, respuesta);
         
         return respuesta.toString();
@@ -53,8 +57,9 @@ public class XMLHelper {
     public String transaccionesToXML(Transacciones transacciones) throws JAXBException{
         JAXBContext jaxbContext = JAXBContext.newInstance(Transacciones.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter respuesta = new StringWriter();
+        jaxbMarshaller.marshal(transacciones, System.out);
         jaxbMarshaller.marshal(transacciones, respuesta);
         
         return respuesta.toString();

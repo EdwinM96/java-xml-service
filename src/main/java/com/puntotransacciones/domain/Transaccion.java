@@ -20,7 +20,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -33,42 +36,49 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(schema="public", name="transacciones")
 public class Transaccion {
     
+    @XmlElement
     @Id
     @GeneratedValue(generator="transacciones_idtransacciones_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "transacciones_idtransacciones_seq", sequenceName = "public.transacciones_idtransacciones_seqq")
     @Column (name="idtransacciones")
     Integer id;
     
+    //@XmlElement(name="usuario")
+    @XmlTransient
     @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn (name="deudor")
     Usuario deudor;
     
+    @XmlElement
     @Column (name="monto")
     Double monto;
     
+    //@XmlElement(name="usuario")
+    @XmlTransient
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name="acreedor")
     Usuario acreedor;
     
+    @XmlElement
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name="fecha")
     Calendar fecha;
     
+    @XmlElement
     @Column (name="comentario")
     String comentario;
     
+    @XmlElement
     @Column (name="tipo_de_pago")
     String tipoDePago;
 
     public Transaccion() {
     }
 
-    public Transaccion(Integer id, Usuario deudor, Double monto, Usuario acreedor, Calendar fecha, String comentario, String tipoDePago) {
+    public Transaccion(Integer id, Double monto, Calendar fecha, String comentario, String tipoDePago) {
         this.id = id;
-        this.deudor = deudor;
         this.monto = monto;
-        this.acreedor = acreedor;
         this.fecha = fecha;
         this.comentario = comentario;
         this.tipoDePago = tipoDePago;
@@ -131,5 +141,13 @@ public class Transaccion {
     }
  
     
-    
+    @Override
+    public String toString(){
+        String xml= "<transaccion id=\""+id+"\" monto=\""+monto+"\" fecha=\""+fecha+"\" comentario=\""+comentario+"\" tipoDePago=\""+tipoDePago+"\">\n"
+                + "  <deudor>\n   <codigoUsuario>"+acreedor.getCampoId()+"</codigoUsuario>\n   <Nombre>"+acreedor.getNombre()+"</nombre>\n  </deudor>"
+                + "  <acreedor>\n   <codigoUsuario>"+deudor.getCampoId()+"</codigoUsuario>\n   <Nombre>"+deudor.getNombre()+"</nombre>\n </deudor>" 
+                +"</transaccion>";
+        
+        return xml;
+    }
 }

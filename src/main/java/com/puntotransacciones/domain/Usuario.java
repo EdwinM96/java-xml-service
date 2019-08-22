@@ -16,7 +16,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 /**
  *
@@ -28,32 +31,40 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(schema="public", name="usuario")
 public class Usuario {
     
+    @XmlElement
     @Id
     @GeneratedValue(generator="usuario_idusuario_seq", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "usuario_idusuario_seq", sequenceName = "public.usuario_idusuario_seq")
     @Column (name="idusuario")
     private Integer id;
     
+    @XmlElement
     @Column (name="codigousuario")
 	private String codigoUsuario;
     
+    @XmlElement
     @Column (name="nombre")
 	private String nombre;
     
+    @XmlElement
     @Column (name="campoid")
 	private String campoId;
     
+    @XmlElement
     @Column (name="saldo")
 	private Double saldo;
     
+    @XmlElement
     @Column (name="activo")
 	private Boolean activo;
-
+    
+    /*@XmlElement(name="transaccion")
     @OneToMany(mappedBy="deudor")
     private Set<Transaccion> transaccionesDeudor;
     
+    @XmlElement(name="transaccion")
     @OneToMany(mappedBy="acreedor")
-    private Set<Transaccion> transaccionesAcreedor;
+    private Set<Transaccion> transaccionesAcreedor;*/
     
     
     public Usuario() {
@@ -71,7 +82,7 @@ public class Usuario {
 
 
 
-    public Set<Transaccion> getTransaccionesDeudor() {
+    /*public Set<Transaccion> getTransaccionesDeudor() {
         return transaccionesDeudor;
     }
 
@@ -85,7 +96,7 @@ public class Usuario {
 
     public void setTransaccionesAcreedor(Set<Transaccion> transaccionesAcreedor) {
         this.transaccionesAcreedor = transaccionesAcreedor;
-    }
+    }*/
 
     
     public Integer getId() {
