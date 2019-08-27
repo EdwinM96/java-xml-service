@@ -53,8 +53,14 @@ public class TransaccionService {
         return xmlHelper.transaccionToXML(transacRepository.findOne(id));
     }
     
+    @Transactional
+    public void eliminarTransaccion(Integer id){
+        transacRepository.delete(id);
+    }
     
-    
-    
+    @Transactional
+    public void añadirTransaccion(Transaccion transaccion){
+        transacRepository.save(transaccion);
+    }
     
 }
